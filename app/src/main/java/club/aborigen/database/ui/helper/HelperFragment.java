@@ -13,11 +13,10 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 import club.aborigen.database.databinding.FragmentHelperBinding;
-import club.aborigen.database.ui.room.DatabaseClient;
-import club.aborigen.database.ui.room.EmployeeEntity;
 
 
 public class HelperFragment extends Fragment {
+    private DatabaseConnector dbConnector;
 
     private FragmentHelperBinding binding;
 
@@ -28,6 +27,16 @@ public class HelperFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textHelper;
+
+        dbConnector = new DatabaseConnector(getContext());
+
+        dbConnector.insert("Felix Karapetyan", 345000);
+        dbConnector.insert("Ruben Danielyan", 645000);
+
+        List<Employee> employees = dbConnector.selectAll();
+        employees.forEach(employee -> {
+            Log.i("UWC", "Helper Employee: " + employee.getName());
+        });
 
         return root;
     }

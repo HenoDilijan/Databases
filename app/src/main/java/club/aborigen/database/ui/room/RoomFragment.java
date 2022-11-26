@@ -55,7 +55,7 @@ public class RoomFragment extends Fragment {
 
             List<EmployeeEntity> employees = DatabaseClient.getInstance(getContext()).getAppDatabase().employeeDao().getAll();
             employees.forEach(employee -> {
-                Log.i("UWC", "Employee: " + employee.name);
+                Log.i("UWC", "Room Employee: " + employee.name);
             });
         }
     }

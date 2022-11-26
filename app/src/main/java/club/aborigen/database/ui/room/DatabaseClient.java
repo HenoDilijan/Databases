@@ -6,7 +6,7 @@ import android.content.Context;
 import androidx.room.Room;
 
 public class DatabaseClient {
-    private static final String DB_NAME = "uwc.db";
+    private static final String DB_NAME = "room.db";
     private static DatabaseClient instance;
     private final AppDatabase appDatabase;
 
