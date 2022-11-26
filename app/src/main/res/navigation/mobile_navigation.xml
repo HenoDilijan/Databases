@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_helper">
+
+    <fragment
+        android:id="@+id/navigation_helper"
+        android:name="club.aborigen.database.ui.helper.HelperFragment"
+        android:label="@string/title_helper"
+        tools:layout="@layout/fragment_helper" />
+
+    <fragment
+        android:id="@+id/navigation_room"
+        android:name="club.aborigen.database.ui.room.RoomFragment"
+        android:label="@string/title_room"
+        tools:layout="@layout/fragment_room" />
+</navigation>
