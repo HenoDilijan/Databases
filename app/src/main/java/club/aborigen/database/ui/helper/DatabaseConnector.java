@@ -1,5 +1,13 @@
 package club.aborigen.database.ui.helper;
 
+import static club.aborigen.database.ui.helper.OpenHelper.COLUMN_ID;
+import static club.aborigen.database.ui.helper.OpenHelper.COLUMN_NAME;
+import static club.aborigen.database.ui.helper.OpenHelper.COLUMN_SALARY;
+import static club.aborigen.database.ui.helper.OpenHelper.NUM_COLUMN_ID;
+import static club.aborigen.database.ui.helper.OpenHelper.NUM_COLUMN_NAME;
+import static club.aborigen.database.ui.helper.OpenHelper.NUM_COLUMN_SALARY;
+import static club.aborigen.database.ui.helper.OpenHelper.TABLE_NAME;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,18 +17,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class DatabaseConnector {
-
-    private static final String DATABASE_NAME = "helper.db";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "employees";
-
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_SALARY = "salary";
-
-    private static final int NUM_COLUMN_ID = 0;
-    private static final int NUM_COLUMN_NAME = 1;
-    private static final int NUM_COLUMN_SALARY = 2;
 
     private SQLiteDatabase database;
 
@@ -64,26 +60,4 @@ public class DatabaseConnector {
         return arr;
     }
 
-    private class OpenHelper extends SQLiteOpenHelper {
-
-        OpenHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            String query = "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COLUMN_NAME+ " TEXT, " +
-                    COLUMN_SALARY + " INTEGER)";
-
-            db.execSQL(query);
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            onCreate(db);
-        }
-    }
 }
